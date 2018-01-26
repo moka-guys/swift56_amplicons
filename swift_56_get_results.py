@@ -63,18 +63,6 @@ with open(i_file, 'r') as i, open(o_file, 'w') as o:
 			# Call the get_cDNA_aa() method of the Amplicon object which calculates the cDNA and aa positions of the amplicon in each transcript for that gene and returns a nested dictionary
 			# Capture the amplicon level data for the most reported transcript in clinvar from the dictionary
 			amplicon_data = a.get_cDNA_aa(g.gene_transcript_dict)[clinvar_most_reported]
-			# aa_start in the amplicon dictionary is the first FULL codon in the amplicon. 
-			# If the amplicon starts partway through a codon, amp_aa_start_diff will contain the number of bases between start of amplicon and start of first full codon.
-			# Therefore if amp_aa_start_diff is anything other than 0, the amplicon actually starts within the codon BEFORE the value in aa_start, so store aa_start - 1 in starts_in_codon variable 
-			if amplicon_data['amp_aa_start_diff']:
-				starts_in_codon = amplicon_data['aa_start'] - 1
-			else:
-				starts_in_codon = amplicon_data['aa_start']
-			# Same as above but for end codon
-			if amplicon_data['amp_aa_end_diff']:
-				ends_in_codon = amplicon_data['aa_end'] + 1
-			else:
-				ends_in_codon = amplicon_data['aa_end']
 			# Write out the fields to output file
 			o.write("\t".join(map(str, [
 				swift_amplicon_name,
@@ -88,10 +76,10 @@ with open(i_file, 'r') as i, open(o_file, 'w') as o:
 				amplicon_data['amp_cDNA_start_diff'],
 				amplicon_data['cDNA_end'],
 				amplicon_data['amp_cDNA_end_diff'],
-				starts_in_codon,
-				amplicon_data['aa_start'],
-				ends_in_codon,
-				amplicon_data['aa_end']
+				amplicon_data['aa_starts_in'],
+				amplicon_data['aa_start_full'],
+				amplicon_data['aa_ends_in'],
+				amplicon_data['aa_end_full']
 			]))
 			+ '\n'
 			)
