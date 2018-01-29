@@ -1,8 +1,8 @@
 # swift56_amplicons
 
-The oncology team have provided a file containing the chromosome, genomic start, genomic stop and gene symbol for the 264 amplicons in the Swift56 oncology panel. They requested that this be annotated with cDNA and amino acid start and stop coordinates.
+The oncology team have provided a file containing the chromosome, genomic start, genomic stop and gene symbol for the 264 amplicons in the Swift56 oncology panel. They requested that this be annotated with cDNA and amino acid start and stop coordinates. Transcripts weren't provided.
 
-The code contained in the `Genes` class of `gene_transcript_library.py` finds all RefSeq transcripts for a given list of gene symbols. It also identifies the canonical transcript and the transcript most reported in ClinVar for each gene.
+The code contained in the `Genes` class of `gene_transcript_library.py` finds all RefSeq transcripts for a given list of gene symbols. It also identifies the canonical transcript from ucsc and the transcript most reported in ClinVar for each gene.
 
 The code contained in the `Amplicon` class of `gene_transcript_library.py` takes a chromosome, start, stop and gene for each amplicon from the input file, and uses the data contained in the Genes object to calculate the cDNA and amino acid coordinates for each transcript for the gene.
 
