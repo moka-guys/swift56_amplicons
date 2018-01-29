@@ -398,7 +398,7 @@ class Amplicon(object):
 		# To get the codon that the amplicon ends within, this number should be rounded up. 
 		# e.g if the transcript ended at cDNA position 10 (so partway through codon 4). Would / 3 (= 3.3).
 		# Round 3.3 down to get the last full codon included in the amplicon (3)
-		# Round 3.3 up to get the codon that the amplicon actually ends in (2)
+		# Round 3.3 up to get the codon that the amplicon actually ends in (4)
 		aa_end_full = int(math.floor((amp_cDNA_end)/3.0))
 		aa_ends_in = int(math.ceil((amp_cDNA_end)/3.0))
 
