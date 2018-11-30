@@ -1,8 +1,8 @@
 from gene_transcript_library import Genes, Amplicon
 # input file
-i_file = '/home/andy/Dropbox/STP/Oncology/swift_56_amplicons.txt'
+i_file = '/home/aled/Documents/180523_Swift57/57_amplicons_sorted.txt'
 # output file
-o_file = '/home/andy/Dropbox/STP/Oncology/SWIFT56_output.txt'
+o_file = '/home/aled/Documents/180523_Swift57/SWIFT57_output.txt'
 
 # Create list of genes from input file 
 all_genes = set([])

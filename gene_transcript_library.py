@@ -52,7 +52,8 @@ class Genes(object):
 		# Trims the 5' and 3' UTRs from the exons to leave the cDNA exon coordinates.
 		# Converts exon starts to 1 based
 		for gene in self.gene_transcript_dict:
-			for transcript, tx_details in self.gene_transcript_dict[gene]['transcripts'].items():	
+			for transcript, tx_details in self.gene_transcript_dict[gene]['transcripts'].items():
+				print gene, transcript
 				# transcript is the NM accession, tx_details is the dictionary containing data retrieved from UCSC refGene
 				# Zip the exon starts and ends together to create list of tuples, where each tuple is the start and end of an exon
 				# i.e. [(exon1_start, exon1_end), (exon2_start, exon2_end)...]
@@ -129,9 +130,10 @@ class Genes(object):
 		# Get the most reported transcript from the last 500 records in ClinVar for each gene
 		# This can take a few minutes if gene list is big
 		for gene in self.gene_transcript_dict:
+			print gene
 			payload = {'db': 'clinvar',
  			'term': gene + '[gene]',
-			'retmax': 500,
+			'retmax': 400,
 			'retmode': 'json'}
 			# First request pulls out JSON containing the IDs for each ClinVar variant record for a gene (max 500 entries, most recent first)
 			r = requests.get('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi', params = payload)
