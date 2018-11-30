@@ -127,7 +127,7 @@ class Genes(object):
 			self.gene_transcript_dict[tx['geneSymbol']]['canonical'] = tx['refseq']
 
 	def get_clinVar(self):
-		# Get the most reported transcript from the last 500 records in ClinVar for each gene
+		# Get the most reported transcript from the last 400 records in ClinVar for each gene
 		# This can take a few minutes if gene list is big
 		for gene in self.gene_transcript_dict:
 			
