@@ -53,7 +53,7 @@ class Genes(object):
 		# Converts exon starts to 1 based
 		for gene in self.gene_transcript_dict:
 			for transcript, tx_details in self.gene_transcript_dict[gene]['transcripts'].items():
-				print gene, transcript
+				#print gene, transcript # for debugging
 				# transcript is the NM accession, tx_details is the dictionary containing data retrieved from UCSC refGene
 				# Zip the exon starts and ends together to create list of tuples, where each tuple is the start and end of an exon
 				# i.e. [(exon1_start, exon1_end), (exon2_start, exon2_end)...]
@@ -130,7 +130,8 @@ class Genes(object):
 		# Get the most reported transcript from the last 500 records in ClinVar for each gene
 		# This can take a few minutes if gene list is big
 		for gene in self.gene_transcript_dict:
-			print gene
+			
+			#print gene # for debugging
 			payload = {'db': 'clinvar',
  			'term': gene + '[gene]',
 			'retmax': 400,
